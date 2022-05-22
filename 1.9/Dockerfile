@@ -30,7 +30,7 @@ RUN apk add --no-cache --virtual egg-deps tcl-dev wget ca-certificates make tar 
 RUN apk add --no-cache oidentd
 
 ENV NICK=""
-ENV IDENTD=""
+ENV IDENT=""
 ENV REALNAME=""
 ENV SERVER=""
 ENV LISTEN="3333"
