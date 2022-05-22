@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   eggdrop:
-    image: eggdrop:lastest
+    image: eggdrop:1.9
 ### If running for the first time without providing your own config, you
 ### probably want to set these variables
 #    environment: 
