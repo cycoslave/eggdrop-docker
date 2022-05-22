@@ -24,8 +24,10 @@ The following variables must be set via the
 -e command line argument in order to run eggdrop
 for the first time:
 
-NICK   - set IRC nickname
-SERVER - set IRC server to connect to
+NICK     - set IRC nickname
+SERVER   - set IRC server to connect to
+IDENT    - set username part of the host
+REALNAME - set the realname
 
 Example:
 docker run -ti -e NICK=DockerBot -e SERVER=irc.freenode.net eggdrop
@@ -77,13 +79,15 @@ EOS
     echo "Previous Eggdrop config file not detected, creating new persistent data file..."
     sed -i \
       -e "/set nick \"Lamestbot\"/c\set nick \"$NICK\"" \
+      -e "/set altnick \"Lamestbot\"/c\set altnick \"$NICK??\"" \
       -e "/server add/d" \
       -e "/#listen 3333 all/c\listen ${LISTEN} all" \
       -e "s/^#set dns-servers/set dns-servers/" \
       -e "/#set owner \"MrLame, MrsLame\"/c\set owner \"${OWNER}\"" \
       -e "/set userfile \"LamestBot.user\"/c\set userfile data/${USERFILE}" \
       -e "/set chanfile \"LamestBot.chan\"/c\set chanfile data/${CHANFILE}" \
-      -e "/set realname \"\/msg LamestBot hello\"/c\set realname \"Docker Eggdrop!\"" \
+      -e "/set realname \"\/msg LamestBot hello\"/c\set realname \"$REALNAME\"" \
+      -e "/set username \"lamest\"/c\set username \"$IDENT\"" \
       -e '/edit your config file completely like you were told/d' \
       -e '/Please make sure you edit your config file completely/d' eggdrop.conf
     echo "server add ${SERVER}" >> ${CONFIG}
