@@ -26,8 +26,12 @@ RUN apk add --no-cache --virtual egg-deps tcl-dev wget ca-certificates make tar 
   && mkdir /home/eggdrop/eggdrop/data \
   && chown -R eggdrop /home/eggdrop/eggdrop \
   && apk del egg-deps
+  
+RUN apk add --no-cache oidentd
 
 ENV NICK=""
+ENV IDENTD=""
+ENV REALNAME=""
 ENV SERVER=""
 ENV LISTEN="3333"
 ENV OWNER=""
