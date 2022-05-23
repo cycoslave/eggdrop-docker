@@ -28,9 +28,7 @@ RUN apk add --no-cache --virtual egg-deps tcl-dev wget ca-certificates make tar 
   && apk del egg-deps
   
 RUN apk add --no-cache oidentd
-RUN mkdir /etc/oidentd \
-  && mv /etc/oidentd.conf /etc/oidentd \
-  && mv /etc/oidentd_masq.conf /etc/oidentd
+RUN mkdir /etc/oidentd
 
 ENV NICK=""
 ENV IDENT=""
