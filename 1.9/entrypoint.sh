@@ -129,6 +129,11 @@ EOS
     echo "Found $PID, removing..."
     rm $PID;
   fi
+  
+### Setup oident
+  ln -sf /etc/oidentd.conf /etc/oidentd/oidentd.conf
+  ln -sf /etc/oidentd_masq.conf /etc/oidentd/oidentd_masq.conf
+
 
   exec ./eggdrop -t -m ${CONFIG}
 fi
