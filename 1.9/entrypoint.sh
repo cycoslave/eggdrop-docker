@@ -131,8 +131,11 @@ EOS
   fi
   
 ### Setup oident
-  ln -sf /etc/oidentd.conf /etc/oidentd/oidentd.conf
-  ln -sf /etc/oidentd_masq.conf /etc/oidentd/oidentd_masq.conf
+  mkdir -p /etc/oidentd
+  mv /etc/oidentd.conf /etc/oidentd/
+  mv /etc/oidentd_masq.conf /etc/oidentd/
+  ln -sf /etc/oidentd/oidentd.conf /etc/oidentd.conf
+  ln -sf /etc/oidentd/oidentd_masq.conf /etc/oidentd_masq.conf
 
 
   exec ./eggdrop -t -m ${CONFIG}
